@@ -1,41 +1,55 @@
+/*main*/
 function main(){
-    let pChoice = 0;
+    let uChoice = 0;
     let cChoice = 0;
-    while (pChoice == cChoice){
-        pChoice = userTurn();
+    while (uChoice == cChoice){
+        uChoice = userTurn();
         cChoice = cpuTurn();
-        if (pChoice == cChoice) alert("Tie")
+        if (uChoice == cChoice){
+            alert("We both chose "+cChoice);
+        }
     }
-    findWinner(pChoice,cChoice);
+    findWinner(uChoice, cChoice);
 }
+/*userTurn
+* @param: none
+* @return: string (r, p, or s)
+*/
 function userTurn(){
-    let pChoice = prompt("Choose between r, p, or s");
-    if (pChoice == "r" || pChoice == "p" || pChoice == "s" ) return pChoice;
-    else {
-        alert("Bad Input");
-        userTurn();
+    let choice = ""
+    while (choice != "r" && choice != "p" && choice != "s"){
+        choice = prompt("Enter r, p or s.");
+        if (choice == "r" ||choice == "p" ||choice == "s" ) return choice;
+        else userTurn;
     }
 }
+/*cpuTurn
+* @param: none
+* @return: string (r, p or s)
+*/
 function cpuTurn(){
-    let choice = Math.floor(Math.random()*3);
-    alert(choice)
+    let choice = Math.floor(Math.random()*2);
     if (choice == 0) return "r";
     else if (choice == 1) return "p";
     else return "s";
 }
-function findWinner(pChoice,cChoice){
+/*findWinner
+* @param: u (sting), c (string)
+* @return: none
+*/
+function findWinner(u,c){
     let winner = "Something went wrong";
-    if (pChoice == "r") {
-        if (cChoice == "s") winner = "Player ";
+    if (u == "r") {
+        if (c == "s") winner = "Player ";
         else winner = "Computer ";
     }
-    else if (pChoice == "s") {
-        if (cChoice == "p") winner = "Player ";
+    else if (u == "s") {
+        if (c == "p") winner = "Player ";
         else winner = "Computer ";
     }
     else {
-        if (cChoice == "r") winner = "Player ";
+        if (c == "r") winner = "Player ";
         else winner = "Computer ";
     }
-    alert(winner+"Wins!");
+    alert("I chose "+c+", and you chose "+u+". "+winner+"wins!");
 }

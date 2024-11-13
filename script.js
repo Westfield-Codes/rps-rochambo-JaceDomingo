@@ -16,40 +16,32 @@ function main(){
 * @return: string (r, p, or s)
 */
 function userTurn(){
-    let choice = ""
-    while (choice != "r" && choice != "p" && choice != "s"){
-        choice = prompt("Enter r, p or s.");
-        if (choice == "r" ||choice == "p" ||choice == "s" ) return choice;
-        else userTurn;
+    let moves = ["r","p","s"];
+    let userTurn = prompt("r, p or s");
+    if (moves.includes(userTurn)) {
+	    return userTurn;
     }
+    else userTurn();
 }
 /*cpuTurn
 * @param: none
 * @return: string (r, p or s)
 */
 function cpuTurn(){
-    let choice = Math.floor(Math.random()*2);
-    if (choice == 0) return "r";
-    else if (choice == 1) return "p";
-    else return "s";
+    let moves = ["r","p","s"];
+    let cpuTurn = Math.floor(Math.random()*2)
+    return moves[cpuTurn];
 }
 /*findWinner
 * @param: u (sting), c (string)
 * @return: none
 */
 function findWinner(u,c){
-    let winner = "Something went wrong";
-    if (u == "r") {
-        if (c == "s") winner = "Player ";
-        else winner = "Computer ";
-    }
-    else if (u == "s") {
-        if (c == "p") winner = "Player ";
-        else winner = "Computer ";
-    }
-    else {
-        if (c == "r") winner = "Player ";
-        else winner = "Computer ";
-    }
-    alert("I chose "+c+", and you chose "+u+". "+winner+"wins!");
+    let winArray=[["r","p","I"],["r","s","you"],["p","s","I"],["p","r","you"],["s","r","I"],["s","p","you"]];
+    while (u != c ){
+         if (winArray[x][0] == u && winArray[x][1] == c){ 
+            winner = winArray[x][2];
+         }
+        }
+        alert("I chose "+c+", and you chose "+u+". "+winner+"win!");
 }

@@ -37,11 +37,12 @@ function cpuTurn(){
 * @return: none
 */
 function findWinner(u,c){
+    
     let winArray=[["r","p","I"],["r","s","you"],["p","s","I"],["p","r","you"],["s","r","I"],["s","p","you"]];
-    while (u != c ){
-         if (winArray[x][0] == u && winArray[x][1] == c){ 
-            winner = winArray[x][2];
+    for (let i = 0; i < winArray.length; i++){
+          if (winArray[i][0] == u && winArray[i][1] == c){ 
+            winner = winArray[i][2];
          }
-        }
-        alert("I chose "+c+", and you chose "+u+". "+winner+"win!");
+    }
+        alert("I chose "+c+", and you chose "+u+". "+winner+" win!");
 }

@@ -17,9 +17,9 @@ function main(){
 */
 function userTurn(){
     let moves = ["r","p","s"];
-    let userTurn = prompt("r, p or s");
-    if (moves.includes(userTurn)) {
-	    return userTurn;
+    let choice = prompt("r, p or s");
+    if (moves.includes(choice)) {
+	    return choice;
     }
     else userTurn();
 }
@@ -36,8 +36,7 @@ function cpuTurn(){
 * @param: u (sting), c (string)
 * @return: none
 */
-function findWinner(u,c){
-    
+function findWinner(u,c){    
     let winArray=[["r","p","I"],["r","s","you"],["p","s","I"],["p","r","you"],["s","r","I"],["s","p","you"]];
     for (let i = 0; i < winArray.length; i++){
           if (winArray[i][0] == u && winArray[i][1] == c){ 
@@ -45,4 +44,6 @@ function findWinner(u,c){
          }
     }
     alert("I chose "+c+", and you chose "+u+". "+winner+" win!");
+  return winner;
 }
+  

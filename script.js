@@ -44,5 +44,5 @@ function findWinner(u,c){
             winner = winArray[i][2];
          }
     }
-        alert("I chose "+c+", and you chose "+u+". "+winner+" win!");
+    alert("I chose "+c+", and you chose "+u+". "+winner+" win!");
 }

@@ -1,6 +1,7 @@
 var score = [0,0];
 
 function main(){
+    score = [0,0];
     let winner = 3;
     let rounds = setRounds();
     let round = 1;

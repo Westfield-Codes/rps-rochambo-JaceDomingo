@@ -1,5 +1,30 @@
-/*main*/
+var score = [0,0];
+
 function main(){
+    score = [0,0];
+    let winner = 3;
+    let rounds = setRounds();
+    let round = 1;
+    while (round <= rounds){
+        winner = rpsRound();
+        score[winner]++;
+        round++;
+    }
+    alert("You have "+score[0]+", and I have "+score[1]);
+    if (score[0]>score[1]) alert("You win!");
+        else alert("I win!");
+}
+
+function setRounds(){
+    let rounds = prompt("How many rounds do you want to play? (Must be odd)")
+    if (rounds%2 == 0){
+        alert("Must be odd");
+        return setRounds();
+    }
+    return rounds;
+}
+
+function rpsRound(){
     let uChoice = 0;
     let cChoice = 0;
     while (uChoice == cChoice){
@@ -9,12 +34,12 @@ function main(){
             alert("We both chose "+cChoice);
         }
     }
-    findWinner(uChoice, cChoice);
+    winner = findWinner(uChoice,cChoice);
+    players = ["you","I"];
+    let win = players.indexOf(winner);
+    return win;
 }
-/*userTurn
-* @param: none
-* @return: string (r, p, or s)
-*/
+
 function userTurn(){
     let moves = ["r","p","s"];
     let choice = prompt("r, p or s");
@@ -23,19 +48,13 @@ function userTurn(){
     }
     else userTurn();
 }
-/*cpuTurn
-* @param: none
-* @return: string (r, p or s)
-*/
-function cpuTurn(){
+
+function cpuTurn() {
     let moves = ["r","p","s"];
     let cpuTurn = Math.floor(Math.random()*2)
     return moves[cpuTurn];
 }
-/*findWinner
-* @param: u (sting), c (string)
-* @return: none
-*/
+
 function findWinner(u,c){    
     let winArray=[["r","p","I"],["r","s","you"],["p","s","I"],["p","r","you"],["s","r","I"],["s","p","you"]];
     for (let i = 0; i < winArray.length; i++){
@@ -46,4 +65,3 @@ function findWinner(u,c){
     alert("I chose "+c+", and you chose "+u+". "+winner+" win!");
   return winner;
 }
-  
